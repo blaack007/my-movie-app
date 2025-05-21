@@ -1,0 +1,81 @@
+/* Modal Styles */
+
+/* Override Bootstrap Modal Content for theme */
+.modal-content {
+  background-color: var(--surface-color);
+  color: var(--text-primary); /* Default text color for modal content */
+  border: none; /* Remove default Bootstrap border */
+  border-radius: 12px; /* Consistent border-radius */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background-color: var(--background-color); /* Or var(--surface-color) if a lighter header is desired */
+  border-bottom: 1px solid var(--darker-border-color);
+  padding: 1.5rem;
+}
+
+.modal-title {
+  color: var(--text-primary);
+  font-size: 1.5rem; /* Ensure consistency */
+  font-weight: 600; /* Ensure consistency */
+}
+
+/* Ensure Bootstrap close button is visible on dark header */
+.modal-header .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%); /* Makes it white */
+}
+
+.modal-body {
+  padding: 1.5rem;
+  color: var(--text-primary); /* Ensure body text is primary */
+}
+
+/* More specific text color overrides within modal body if needed */
+.modal-body p,
+.modal-body strong,
+.modal-body h6,
+.modal-body li {
+  color: var(--text-primary);
+}
+
+.modal-body p strong { /* Ensure strong within p also gets the color */
+   color: var(--text-primary);
+}
+
+/* Themed Badges within the Modal */
+.modal-body .badge {
+  color: var(--text-primary);
+  background-color: var(--darker-border-color);
+  font-weight: 500;
+  padding: 0.5em 0.75em; /* Consistent padding */
+  margin-right: 0.5em; /* Spacing for badges */
+  margin-bottom: 0.5em;
+}
+
+.modal-body .badge.bg-secondary { /* Override Bootstrap bg-secondary */
+  background-color: var(--darker-border-color);
+  color: var(--text-primary);
+}
+
+.modal-body .badge.bg-light { /* Override Bootstrap bg-light */
+  background-color: var(--surface-color); /* Use surface for light badges */
+  color: var(--text-secondary); /* Text secondary for less emphasis */
+  border: 1px solid var(--darker-border-color);
+}
+
+/* Ensure the .app-card__link (previously .tv-card-link) inside a modal is styled correctly */
+.modal-body .app-card__link {
+  /* Styles are in Card.css and should apply, this is just a placeholder if overrides are needed */
+}
+
+/* If you decide to style the backdrop via CSS instead of inline styles */
+/* .app-modal__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--backdrop-overlay, rgba(0, 0, 0, 0.7)); 
+  z-index: 1040;
+} */ 

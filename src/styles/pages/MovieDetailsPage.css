@@ -1,0 +1,484 @@
+/* src/styles/pages/MovieDetailsPage.css */
+
+.movie-details {
+  background-color: var(--background-color);
+  /* Any overall padding for the page can go here if not handled by individual sections */
+}
+
+/* Hero Section Specific Styles */
+.hero-section {
+  position: relative;
+  background-color: #000; /* Or var(--background-color) if preferred, #000 gives max contrast */
+  overflow: hidden;
+  padding-top: 3rem; /* Add some padding for content */
+  padding-bottom: 3rem;
+}
+
+.hero-section .overlay {
+  background: linear-gradient(
+    to bottom,
+    var(--hero-overlay-start, rgba(0,0,0,0.85)) 0%,
+    var(--hero-overlay-mid, rgba(0,0,0,0.75)) 50%,
+    var(--hero-overlay-start, rgba(0,0,0,0.85)) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Ensure container within hero has z-index to be above overlay */
+.hero-section .container-fluid { /* Assuming container-fluid from previous edits */
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .show-poster {
+  display: block; /* Or inline-block */
+  max-width: 300px; /* Control max size */
+  margin-left: auto; /* Centering if col-md-4 is not full */
+  margin-right: auto;
+  border-radius: 12px; /* Softer edges */
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for dark theme */
+}
+
+.hero-section .show-poster:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+/* Specific Rating Badge for Hero */
+.hero-section .rating-badge {
+  background: var(--accent-color);
+  color: var(--text-on-accent);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 700; /* Bolder for hero */
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero-section .bullet-separator {
+  color: var(--text-secondary, #B3B3B3);
+  font-size: 1.2rem;
+  margin: 0 0.5em;
+}
+
+.hero-section .status-badge {
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque for better visibility */
+  color: var(--text-primary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.hero-section .genres-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* More spacing */
+  margin-top: 1rem;
+}
+
+.hero-section .genre-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.hero-section .genre-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Show Information Section */
+.show-info-section-wrapper {
+  margin-top: -60px; /* Pulls it up over the hero a bit if desired, adjust as needed */
+  position: relative;
+  z-index: 3; /* Above hero overlay and content */
+}
+
+.info-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem; /* Spacing between info cards if multiple */
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.info-card-header {
+  background: var(--background-color); /* Darker header for contrast */
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--darker-border-color);
+}
+
+.info-card-header h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-icon {
+  color: var(--accent-color);
+  font-size: 1.3rem; /* Slightly larger icon */
+}
+
+.info-card-body {
+  padding: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--darker-border-color, #333);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.info-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Cast Section */
+.cast-section {
+  margin-top: 2rem; /* Consistent spacing */
+  margin-bottom: 2rem;
+}
+
+.cast-section h4 {
+ color: var(--text-primary);
+ margin-bottom: 1.5rem;
+ font-size: 1.5rem;
+ font-weight: 600;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.cast-card {
+  position: relative;
+  border-radius: 10px; /* Slightly less rounded than info-card */
+  overflow: hidden;
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cast-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.cast-card-image-wrapper {
+  position: relative;
+  padding-top: 150%; /* Aspect ratio for poster-like images */
+}
+
+.cast-card-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cast-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    var(--cast-card-overlay-start, rgba(18,18,18,0.95)) 0%,
+    var(--cast-card-overlay-mid, rgba(18,18,18,0.7)) 50%,
+    transparent 100%
+  );
+  padding: 1.5rem 1rem 1rem; 
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  color: var(--text-primary);
+  display: flex; /* Added for centering content */
+  flex-direction: column; /* Stack name and character */
+  justify-content: flex-end; /* Align content to the bottom of the overlay */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Ensure text is centered */
+}
+
+.cast-card:hover .cast-card-overlay {
+  transform: translateY(0);
+}
+
+.cast-name {
+  font-size: 1rem; /* Adjusted size */
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.cast-character {
+  font-size: 0.85rem; /* Adjusted size */
+  color: var(--text-secondary);
+}
+
+/* Air Dates & Production Section (can be generalized if needed) */
+.air-dates-production-section {
+  margin-bottom: 2rem; /* Consistent spacing */
+}
+
+.air-dates-production-section .info-card-header h4 {
+  font-size: 1.2rem; /* Slightly smaller than main info card header */
+}
+
+/* Production Companies */
+.production-companies-section {
+  margin-top: 2rem;
+  margin-bottom: 1rem; /* Less margin at the bottom before trailer */
+}
+
+.production-companies-section h4 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.production-companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.5rem;
+  align-items: center; /* Vertically align items if they have different heights */
+}
+
+.production-company {
+  background-color: var(--surface-color-darker, #2a2a2a);
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 150px; /* Fixed height for consistency */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.production-company:hover {
+  background-color: var(--surface-color, #333);
+  transform: translateY(-3px);
+}
+
+.production-company-image {
+  max-height: 70px; /* Control logo size */
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+  filter: brightness(0) invert(1); /* Make logos white if they are dark on transparent */
+  transition: transform 0.3s ease;
+}
+
+.production-company-logo {
+  max-height: 70px;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 0.75rem;
+  /* filter: brightness(0) invert(1); Uncomment if logos are mostly dark */
+}
+
+.production-company:hover .production-company-logo {
+  /* Add subtle hover effect to logo if desired */
+  /* transform: scale(1.05); */
+}
+
+
+.production-company-placeholder {
+  width: 100%;
+  height: 70px; /* Match image max height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-color, #121212); /* Darker placeholder */
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.production-company-placeholder .icon {
+  font-size: 2rem;
+  color: var(--text-tertiary, #555);
+}
+
+.company-name {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+/* Trailer Section */
+.trailer-player-container {
+  background-color: var(--background-color);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  margin-top: 2rem;
+}
+
+.trailer-player-container h4 {
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iframe-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Add a bit more specific styling for error and loading states */
+.error-message,
+.loading-spinner-container /* Assuming you might wrap spinner */ {
+  color: var(--text-primary);
+  text-align: center;
+  padding: 2rem;
+  min-height: 200px; /* Ensure it takes some space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Adjust ShowsSlider title if needed within this page context */
+.movie-details .shows-slider-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Responsive adjustments if necessary */
+@media (max-width: 992px) {
+  .hero-section .show-poster {
+    max-width: 250px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .show-info-section-wrapper {
+    margin-top: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section .show-poster {
+    max-width: 200px;
+  }
+  .hero-section .container-fluid .text-md-start{
+    text-align: center !important;
+  }
+  .hero-section .genres-list, .hero-section .d-flex.align-items-center.mb-3 {
+    justify-content: center !important;
+  }
+
+  .info-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .info-value {
+    text-align: left;
+    margin-top: 0.25rem;
+  }
+  .production-companies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 1rem;
+  }
+  .production-company {
+    height: 130px;
+  }
+  .cast-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  .trailer-player-container {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section .display-4 {
+    font-size: 2rem;
+  }
+  .hero-section .lead {
+    font-size: 0.95rem;
+  }
+  .hero-section .rating-badge,
+  .hero-section .status-badge {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  .hero-section .genre-badge {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  .info-card-header h4 {
+    font-size: 1.1rem;
+  }
+  .cast-section h4, .trailer-player-container h4, .production-companies-section h4 {
+    font-size: 1.3rem;
+  }
+  .cast-card-overlay {
+    padding: 1rem 0.75rem 0.75rem;
+  }
+  .cast-name {
+    font-size: 0.9rem;
+  }
+  .cast-character {
+    font-size: 0.75rem;
+  }
+
+} 

@@ -1,0 +1,124 @@
+.app-navbar {
+  background-color: #121212; /* Rich black background */
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.app-navbar__brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #E50914; /* Crimson Red brand name */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.app-navbar__links .nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  padding: 0.5rem 1rem;
+  transition: color 0.2s ease-in-out, border-bottom 0.2s ease;
+}
+
+.app-navbar__links .nav-link:hover,
+.app-navbar__links .nav-link:focus {
+  color: #FFD700; /* Gold hover effect */
+}
+
+.app-navbar__links .nav-link.active {
+  color: #FFFFFF;
+  font-weight: 500;
+  border-bottom: 2px solid #E50914; /* Crimson underline for active */
+}
+
+.app-navbar .dropdown-menu {
+  background-color: #1E1E1E; /* Dark gray dropdown */
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.app-navbar .dropdown-item {
+  color: rgba(255, 255, 255, 0.75);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.app-navbar .dropdown-item:hover,
+.app-navbar .dropdown-item:focus {
+  color: #FFD700;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.app-navbar__logo-img {
+  margin-right: 0.5rem; /* Example: Add some space if you keep text next to it */
+  /* Add any other specific styling needed for the logo image */
+}
+
+/* Search Form Styling */
+.app-navbar__search-form {
+  position: relative;
+  width: 300px;
+  transition: width 0.3s ease;
+}
+
+.app-navbar__search-form:focus-within {
+  width: 350px;
+}
+
+.app-navbar__search-input {
+  background-color: rgba(30, 30, 30, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  color: gray !important;
+  padding-left: 2.5rem !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.app-navbar__search-input::placeholder {
+  color: gray  !important;
+  font-size: 0.9rem;
+}
+
+.app-navbar__search-input:focus {
+  background-color: rgba(30, 30, 30, 0.9) !important;
+  border-color: #E50914 !important;
+  box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important;
+}
+
+.app-navbar__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.app-navbar__search-button {
+  background-color: #E50914 !important;
+  border-color: #E50914 !important;
+  color: white !important;
+  font-weight: 500 !important;
+  border-radius: 20px !important;
+  padding: 0.375rem 1rem !important;
+  transition: all 0.2s ease !important;
+  margin-left: 0.5rem !important;
+}
+
+.app-navbar__search-button:hover,
+.app-navbar__search-button:focus {
+  background-color: #c50812 !important;
+  box-shadow: 0 0 0 0.25rem rgba(229, 9, 20, 0.25) !important;
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .app-navbar__search-form {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .app-navbar__search-form:focus-within {
+    width: 100%;
+  }
+}

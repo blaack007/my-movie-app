@@ -1,0 +1,42 @@
+/* src/styles/pages/CategoryPage.css */
+
+.category-page {
+  min-height: 100vh;
+  /* background-color: var(--background-color); Inherited from body */
+  /* The container-xl and py-4 are Bootstrap classes providing padding and width constraints */
+}
+
+/* Styles for the header section with back button and title */
+.category-page-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem; /* Adjusted from mb-4 in JSX for tighter spacing */
+}
+
+.category-page-header .page-title-text {
+  /* Assuming h1 is used for title */
+  margin-bottom: 0; /* Override Bootstrap default h1 margin if any */
+  font-size: 2rem; /* Slightly smaller than global .page-title for context */
+  color: var(--text-primary);
+}
+
+/* Styling for the back button if not using a global themed button */
+.category-page .btn-outline-secondary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  margin-right: 1rem; /* Adjusted from me-3 */
+  transition: all 0.2s ease;
+}
+
+.category-page .btn-outline-secondary:hover {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  transform: translateX(-2px);
+}
+
+/* Grid layout for shows - uses Bootstrap row/col classes, 
+   so specific styles here are only if overrides are needed. */
+.category-page .row {
+  /* Example: row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 */
+  /* If you need custom gap or different behavior, style here */
+} 

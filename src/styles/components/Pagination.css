@@ -1,0 +1,50 @@
+/* Pagination Styles */
+.app-pagination-container {
+  margin-top: 2rem;
+  display: flex; /* Added for centering */
+  justify-content: center; /* Added for centering */
+}
+
+.app-pagination {
+  display: flex;
+  gap: 0.5rem;
+  padding-left: 0; /* Remove default ul padding */
+  list-style: none; /* Remove default ul list-style */
+  border-radius: 0.25rem; /* Optional: if you want a rounded container for the pagination */
+}
+
+.app-pagination__item {
+  /* No specific styles needed for item itself if link takes up all space */
+}
+
+.app-pagination__link {
+  display: block; /* Make link fill the item for easier clicking */
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--surface-color);
+  border-radius: 4px;
+  color: var(--primary-color);
+  background-color: var(--surface-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none; /* Remove underline from links */
+}
+
+.app-pagination__link:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.app-pagination__item.active .app-pagination__link {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+  z-index: 2; /* Ensure active link is on top if there are overlaps */
+}
+
+.app-pagination__item.disabled .app-pagination__link {
+  color: var(--text-secondary);
+  pointer-events: none;
+  background-color: var(--background-color); /* Or var(--surface-color) with low opacity */
+  border-color: var(--surface-color);
+} 

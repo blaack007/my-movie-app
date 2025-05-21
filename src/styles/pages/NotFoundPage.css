@@ -1,0 +1,109 @@
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 2rem;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.not-found-content {
+  max-width: 600px;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 10px;
+  background-color: var(--surface-overlay-color);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--darker-border-color);
+}
+
+.not-found-title {
+  font-size: 8rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(to right, var(--primary-color), var(--warning-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.not-found-subtitle {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.not-found-text {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.not-found-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.not-found-links .btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.not-found-links .btn-outline-secondary {
+  color: var(--text-secondary);
+  border-color: var(--darker-border-color);
+}
+
+.not-found-links .btn-outline-secondary:hover {
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+}
+
+/* Animation for a subtle effect */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.not-found-title {
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 576px) {
+  .not-found-title {
+    font-size: 5rem;
+  }
+  
+  .not-found-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .not-found-content {
+    padding: 2rem 1rem;
+  }
+  
+  .not-found-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .not-found-links .btn {
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+} 

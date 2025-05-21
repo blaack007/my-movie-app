@@ -1,0 +1,370 @@
+/* src/styles/pages/TvShowDetailsPage.css */
+
+.tv-show-details {
+  background-color: var(--background-color);
+  /* Any overall padding for the page can go here if not handled by individual sections */
+}
+
+/* Hero Section Specific Styles */
+.hero-section {
+  position: relative;
+  background-color: #000; /* Or var(--background-color) if preferred, #000 gives max contrast */
+  overflow: hidden;
+  padding-top: 3rem; /* Add some padding for content */
+  padding-bottom: 3rem;
+}
+
+.hero-section .overlay {
+  background: linear-gradient(
+    to bottom,
+    var(--hero-overlay-start, rgba(0,0,0,0.85)) 0%,
+    var(--hero-overlay-mid, rgba(0,0,0,0.75)) 50%,
+    var(--hero-overlay-start, rgba(0,0,0,0.85)) 100%
+  );
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Ensure container within hero has z-index to be above overlay */
+.hero-section .container-fluid { /* Assuming container-fluid from previous edits */
+  position: relative;
+  z-index: 2;
+}
+
+.hero-section .show-poster {
+  display: block; /* Or inline-block */
+  max-width: 300px; /* Control max size */
+  margin-left: auto; /* Centering if col-md-4 is not full */
+  margin-right: auto;
+  border-radius: 12px; /* Softer edges */
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Enhanced shadow for dark theme */
+}
+
+.hero-section .show-poster:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+/* Specific Rating Badge for Hero */
+.hero-section .rating-badge {
+  background: var(--accent-color);
+  color: var(--text-on-accent);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 700; /* Bolder for hero */
+  font-size: 1rem;
+  backdrop-filter: blur(4px);
+}
+
+.hero-section .bullet-separator {
+  color: var(--text-secondary, #B3B3B3);
+  font-size: 1.2rem;
+  margin: 0 0.5em;
+}
+
+.hero-section .status-badge {
+  background: rgba(255, 255, 255, 0.15); /* Slightly more opaque for better visibility */
+  color: var(--text-primary);
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(4px);
+}
+
+.hero-section .genres-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem; /* More spacing */
+  margin-top: 1rem;
+}
+
+.hero-section .genre-badge {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.hero-section .genre-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Show Information Section */
+.show-info-section-wrapper {
+  margin-top: -60px; /* Pulls it up over the hero a bit if desired, adjust as needed */
+  position: relative;
+  z-index: 3; /* Above hero overlay and content */
+}
+
+.info-card {
+  background: var(--surface-color);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 2rem; /* Spacing between info cards if multiple */
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.info-card-header {
+  background: var(--background-color); /* Darker header for contrast */
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--darker-border-color);
+}
+
+.info-card-header h4 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.info-icon {
+  color: var(--accent-color);
+  font-size: 1.3rem; /* Slightly larger icon */
+}
+
+.info-card-body {
+  padding: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--darker-border-color, #333);
+}
+
+.info-item:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.info-value {
+  color: var(--text-primary);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Cast Section */
+.cast-section {
+  margin-top: 2rem; /* Consistent spacing */
+  margin-bottom: 2rem;
+}
+
+.cast-section h4 {
+ color: var(--text-primary);
+ margin-bottom: 1.5rem;
+ font-size: 1.5rem;
+ font-weight: 600;
+}
+
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1.5rem;
+}
+
+.cast-card {
+  position: relative;
+  border-radius: 10px; /* Slightly less rounded than info-card */
+  overflow: hidden;
+  background-color: var(--surface-color);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cast-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.cast-card-image-wrapper {
+  position: relative;
+  padding-top: 150%; /* Aspect ratio for poster-like images */
+}
+
+.cast-card-image-wrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cast-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    var(--cast-card-overlay-start, rgba(18,18,18,0.95)) 0%,
+    var(--cast-card-overlay-mid, rgba(18,18,18,0.7)) 50%,
+    transparent 100%
+  );
+  padding: 1.5rem 1rem 1rem; 
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+  color: var(--text-primary);
+  display: flex; /* Added for centering content */
+  flex-direction: column; /* Stack name and character */
+  justify-content: flex-end; /* Align content to the bottom of the overlay */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Ensure text is centered */
+}
+
+.cast-card:hover .cast-card-overlay {
+  transform: translateY(0);
+}
+
+.cast-name {
+  font-size: 1rem; /* Adjusted size */
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.cast-character {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  color: var(--text-secondary); /* Ensure secondary text color */
+}
+
+/* Production Companies */
+.production-companies-section {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.production-companies-section h4 {
+ color: var(--text-primary);
+ margin-bottom: 1.5rem;
+ font-size: 1.5rem;
+ font-weight: 600;
+}
+
+.production-companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+.production-company {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.production-company:hover {
+  background-color: var(--darker-border-color); /* Subtle hover */
+}
+
+.production-company-image {
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.production-company-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: grayscale(30%) brightness(0.9) contrast(1.1); /* Adjusted for better visibility on dark theme */
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.production-company:hover .production-company-logo {
+  filter: grayscale(0%) brightness(1) contrast(1);
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+.production-company-placeholder {
+  width: 70px; /* Larger placeholder */
+  height: 70px;
+  background-color: var(--darker-border-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+.company-name {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  line-height: 1.3;
+  height: 2.6em; /* Allow for two lines */
+  overflow: hidden;
+}
+
+/* Trailer Player Section */
+.trailer-player-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: var(--surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.trailer-player-container h4 {
+  font-size: 1.5rem; /* Match other section titles */
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.iframe-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 8px; /* Match card radius */
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none; /* Ensure no border from iframe itself */
+} 
