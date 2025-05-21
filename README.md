@@ -4,7 +4,7 @@ A modern, responsive React application for browsing movies and TV shows using Th
 
 ## Live Demo
 
-Visit the application at [https://my-movie-app-demo.vercel.app]([https://my-movie-app-demo.vercel.app](https://vercel.com/mohamed-ahmed-khalifas-projects/my-movie-app)) (placeholder URL)
+Check out the live app here: [My Movie App on Vercel](https://vercel.com/mohamed-ahmed-khalifas-projects/my-movie-app)
 
 
 ## Features
