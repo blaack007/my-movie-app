@@ -1,6 +1,19 @@
 import React from 'react';
 
 export default function HeroSection({ details, imageBaseUrl }) {
+  // Get the release year handling both movie and TV show date formats
+  const getReleaseYear = () => {
+    const dateString = details.release_date || details.first_air_date;
+    
+    if (!dateString) return 'Unknown Year';
+    
+    const year = new Date(dateString).getFullYear();
+    return isNaN(year) ? 'Unknown Year' : year;
+  };
+
+  // Get the title handling both movie and TV show naming
+  const title = details.title || details.name || 'Untitled';
+
   return (
     <div 
       className="hero-section position-relative"
@@ -17,17 +30,17 @@ export default function HeroSection({ details, imageBaseUrl }) {
           <div className="col-md-4">
             <img 
               src={`${imageBaseUrl}${details.poster_path}`}
-              alt={details.name}
+              alt={title}
               className="img-fluid rounded-3 shadow-lg show-poster"
             />
           </div>
           <div className="col-md-8 text-white">
-            <h1 className="display-4 fw-bold mb-3">{details.name}</h1>
+            <h1 className="display-4 fw-bold mb-3">{title}</h1>
             <div className="d-flex align-items-center mb-3 flex-wrap">
               <span className="rating-badge me-3">⭐ {details.vote_average.toFixed(1)}</span>
               <span className="text-light opacity-75 me-3">{details.vote_count.toLocaleString()} votes</span>
               <span className="bullet-separator me-3">•</span>
-              <span className="me-3">{new Date(details.first_air_date).getFullYear()}</span>
+              <span className="me-3">{getReleaseYear()}</span>
               <span className="bullet-separator me-3">•</span>
               <span className="status-badge">{details.status}</span>
             </div>
