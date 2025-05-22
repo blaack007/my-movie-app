@@ -2,16 +2,16 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
-import '../styles/components/Modal.css'; // Assuming this style can be shared
-import '../styles/components/Card.css'; // Added to access app-card__link styles
+import { IMAGE_BASE_URL } from '../apis/config';
+import '../styles/components/Modal.css';
+import '../styles/components/Card.css';
 
 export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadingDetails, detailsError }) {
   if (!isOpen || !item) return null;
 
-  const imageBaseUrl = "https://image.tmdb.org/t/p/w500";
+  const imageBaseUrl = `${IMAGE_BASE_URL}w500`;
   const isMovie = mediaType === 'movie';
 
-  // Common properties from item (which is initialItem or merged initialItem + details)
   const title = isMovie ? item.title : item.name;
   const overview = item.overview;
   const posterPath = item.poster_path;
@@ -20,7 +20,6 @@ export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadi
   const originalLanguage = item.original_language;
   const id = item.id;
 
-  // Media type specific properties (may or may not be present in initialItem)
   const releaseDate = isMovie ? item.release_date : item.first_air_date;
   const status = !isMovie ? item.status : undefined;
   const numberOfSeasons = !isMovie ? item.number_of_seasons : undefined;
@@ -38,7 +37,6 @@ export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadi
       </Modal.Header>
       <Modal.Body className="app-modal__body">
         <div className="row">
-          {/* --- Left Column: Poster and essential details --- */}
           <div className="col-md-4 text-center">
             {posterPath ? (
               <img 
@@ -60,12 +58,10 @@ export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadi
             )}
           </div>
 
-          {/* --- Right Column: Overview and other details --- */}
           <div className="col-md-8">
             <h6 className="fw-bold">Overview</h6>
             <p className="app-modal__overview mb-3">{overview || "Overview not available."}</p>
 
-            {/* Indicator for loading additional details or error message */}
             {isLoadingDetails && (
               <div className="text-muted py-2">
                 <div className="spinner-border spinner-border-sm me-2" role="status">
@@ -80,7 +76,6 @@ export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadi
               </div>
             )}
 
-            {/* Sections for details that are typically fetched (will appear when loaded) */}
             {!isLoadingDetails && !detailsError && (
               <>
                 {isMovie && tagline && (
@@ -106,7 +101,6 @@ export default function GenericModal({ item, isOpen, onClose, mediaType, isLoadi
               </>
             )}
 
-            {/* Genres and Original Language (might be in initial item, or enhanced by details) */}
             {genres.length > 0 && (
                 <>
                     <h6 className="fw-bold mt-3">Genres</h6>

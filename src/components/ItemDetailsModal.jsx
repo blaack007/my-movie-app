@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axiosInstance from "../apis/config";
 import GenericModal from './GenericModal';
 
-const API_KEY = `c3ba834e295dac6c3509ddb9e2387366`; // Consider moving to a central config
-
-// Common fields to append for both movies and TV shows
 const APPEND_TO_RESPONSE = "credits,recommendations,videos,keywords,reviews";
 
 export default function ItemDetailsModal({ initialItem, mediaType, isOpen, onClose }) {
@@ -14,13 +11,12 @@ export default function ItemDetailsModal({ initialItem, mediaType, isOpen, onClo
 
   useEffect(() => {
     if (isOpen && initialItem) {
-      // Fetch details if they haven't been fetched for this item, or if the item ID changes
       if (!details || details.id !== initialItem.id) { 
         setIsLoadingDetails(true);
         setDetailsError(null);
-        setDetails(null); // Clear previous details before fetching new ones
+        setDetails(null);
 
-        const endpoint = `/${mediaType}/${initialItem.id}?api_key=${API_KEY}&append_to_response=${APPEND_TO_RESPONSE}`;
+        const endpoint = `/${mediaType}/${initialItem.id}?append_to_response=${APPEND_TO_RESPONSE}`;
         
         axiosInstance.get(endpoint)
           .then(response => {
@@ -34,23 +30,20 @@ export default function ItemDetailsModal({ initialItem, mediaType, isOpen, onClo
           });
       }
     } else if (!isOpen) {
-      // Reset states when modal is closed
       setDetails(null); 
       setIsLoadingDetails(false);
       setDetailsError(null);
     }
-  }, [isOpen, initialItem, mediaType, details]); // Include details in dep array
+  }, [isOpen, initialItem, mediaType, details]);
 
   if (!isOpen || !initialItem) return null;
 
-  // Merge initial item data with fetched details
-  // The name/title from details might be more accurate or complete
   const itemForModal = details 
     ? { ...initialItem, ...details, 
-        name: details.name || initialItem.name, // For TV
-        title: details.title || initialItem.title // For Movie
+        name: details.name || initialItem.name,
+        title: details.title || initialItem.title
       } 
-    : initialItem; // Fallback to basic item info if details are not yet loaded
+    : initialItem;
 
   return (
     <GenericModal 

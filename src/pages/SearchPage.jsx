@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import axiosInstance from '../apis/config';
 import ItemCard from '../components/ItemCard';
-import Pagination from '../components/Pagination'; // For later if we implement pagination for search
-import '../styles/pages/SearchPage.css'; // We'll create this CSS file
+import Pagination from '../components/Pagination';
+import '../styles/pages/SearchPage.css';
 
 export default function SearchPage() {
   const location = useLocation();
@@ -26,7 +26,6 @@ export default function SearchPage() {
       setLoading(true);
       setError(null);
       try {
-        // Using TMDB's multi-search endpoint
         const response = await axiosInstance.get(
           `/search/multi`, { 
             params: { 
@@ -36,13 +35,12 @@ export default function SearchPage() {
           }
         );
         
-        // Filter out results that are not movies or TV shows, or don't have a poster
         const filteredResults = response.data.results.filter(
           item => (item.media_type === 'movie' || item.media_type === 'tv') && item.poster_path
         );
 
         setSearchResults(filteredResults);
-        setTotalPages(response.data.total_pages > 500 ? 500 : response.data.total_pages); // Cap total pages
+        setTotalPages(response.data.total_pages > 500 ? 500 : response.data.total_pages);
 
       } catch (err) {
         console.error("Error fetching search results:", err);

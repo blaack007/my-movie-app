@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axiosInstance from "../apis/config";
-import ShowsSlider from "../components/ShowsSlider"; // Assuming ShowsSlider can be reused for movies
+import ShowsSlider from "../components/ShowsSlider";
 import '../styles/pages/MoviesPage.css';
 
 export default function MoviesPage() {

@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import TvShowCard from './TvShowCard'; // No longer needed
-// import MovieCard from './MovieCard'; // No longer needed
-import ItemCard from './ItemCard'; // Import the new ItemCard
+import ItemCard from './ItemCard'; 
 import '../styles/components/Slider.css';
 
 export default function ShowsSlider({ shows, title, mediaType = 'tv' }) {
@@ -44,15 +42,10 @@ export default function ShowsSlider({ shows, title, mediaType = 'tv' }) {
   if (!shows || shows.length === 0) {
     return (
       <div className="app-slider-section">
-        {/* Title is now passed from parent page (MoviesPage/TvShowsPage) directly */}
-        {/* <h3 className="app-slider-section__title">{title}</h3> */}
         <p>No items to display in this section.</p>
       </div>
     );
   }
-
-  // const CardComponent = mediaType === 'movie' ? MovieCard : TvShowCard; // No longer needed
-  // const itemPropName = mediaType === 'movie' ? 'movie' : 'show'; // No longer needed
 
   return (
     <div className="app-slider-section">

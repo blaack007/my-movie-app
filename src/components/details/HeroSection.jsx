@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function HeroSection({ details, imageBaseUrl }) {
-  // Get the release year handling both movie and TV show date formats
   const getReleaseYear = () => {
     const dateString = details.release_date || details.first_air_date;
     
@@ -11,7 +10,6 @@ export default function HeroSection({ details, imageBaseUrl }) {
     return isNaN(year) ? 'Unknown Year' : year;
   };
 
-  // Get the title handling both movie and TV show naming
   const title = details.title || details.name || 'Untitled';
 
   return (

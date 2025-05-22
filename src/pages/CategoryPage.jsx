@@ -30,8 +30,8 @@ export default function CategoryPage() {
         popular: { title: "Popular Movies", endpoint: "/movie/popular" },
         topRated: { title: "Top Rated Movies", endpoint: "/movie/top_rated" },
         upcoming: { title: "Upcoming Movies", endpoint: "/movie/upcoming" }
-      }
-    };
+    }
+  };
     return baseConfig[mediaType]?.[routeCategory];
   }, [mediaType, routeCategory]);
 
@@ -117,11 +117,11 @@ export default function CategoryPage() {
       </div>
 
       {totalPages > 1 && (
-        <Pagination 
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
+      <Pagination 
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
+      />
       )}
     </div>
   );

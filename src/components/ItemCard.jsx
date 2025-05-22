@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import ItemDetailsModal from './ItemDetailsModal';
 import { IMAGE_BASE_URL } from '../apis/config';
 import { isItemInWatchlist, addItemToWatchlist, removeItemFromWatchlist } from '../utils/watchlist';
-import '../styles/components/Card.css'; // Assuming Card.css is generic enough
+import '../styles/components/Card.css';
 
-const MAX_OVERVIEW_LENGTH = 100; // Max characters for overview on card
+const MAX_OVERVIEW_LENGTH = 100;
 
 function truncateText(text, maxLength) {
   if (!text) return '';
@@ -21,12 +21,10 @@ export default function ItemCard({ item, mediaType }) {
   const itemImageBaseUrl = `${IMAGE_BASE_URL}w500`;
 
   useEffect(() => {
-    // Check if item is in watchlist using the utility function
     setIsInWatchlist(isItemInWatchlist(item.id, mediaType));
   }, [item.id, mediaType]);
 
   if (!item || !item.poster_path) {
-    // Or render a placeholder card
     return null; 
   }
 
@@ -36,14 +34,12 @@ export default function ItemCard({ item, mediaType }) {
   const truncatedOverview = truncateText(item.overview, MAX_OVERVIEW_LENGTH);
 
   const handleToggleWatchlist = (e) => {
-    e.stopPropagation(); // Prevent modal from opening
+    e.stopPropagation();
     
     if (isInWatchlist) {
-      // Remove from watchlist
       removeItemFromWatchlist(item.id, mediaType);
       setIsInWatchlist(false);
     } else {
-      // Add to watchlist
       addItemToWatchlist(item, mediaType);
       setIsInWatchlist(true);
     }
@@ -72,7 +68,6 @@ export default function ItemCard({ item, mediaType }) {
               ⭐ {item.vote_average.toFixed(1)}
             </div>
           )}
-          {/* Watchlist Toggle Button */}
           <button 
             className={`btn app-card__watchlist-btn ${isInWatchlist ? 'active' : ''}`}
             onClick={handleToggleWatchlist}
@@ -87,7 +82,7 @@ export default function ItemCard({ item, mediaType }) {
           <Link 
             to={detailPath}
             className="app-card__link"
-            onClick={(e) => e.stopPropagation()} // Prevent modal from opening when clicking details link
+            onClick={(e) => e.stopPropagation()}
           >
             More Details
           </Link>

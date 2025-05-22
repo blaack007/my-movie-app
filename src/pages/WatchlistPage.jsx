@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ItemCard from '../components/ItemCard';
-// Import watchlist utils
 import { getWatchlist } from '../utils/watchlist'; 
-import '../styles/pages/WatchlistPage.css'; // We'll create this CSS file next
-
-// Helper function (can be moved to utils.js later)
-// const getWatchlistFromLocalStorage = () => { ... }; // Removed
+import '../styles/pages/WatchlistPage.css';
 
 export default function WatchlistPage() {
   const [watchlistItems, setWatchlistItems] = useState({ movie: [], tv: [] });
@@ -13,15 +9,13 @@ export default function WatchlistPage() {
 
   const loadWatchlist = () => {
     setLoading(true);
-    const items = getWatchlist(); // Use imported function
+    const items = getWatchlist();
     setWatchlistItems(items);
     setLoading(false);
   };
 
   useEffect(() => {
     loadWatchlist();
-
-    // Optional: Listen for custom event to refresh watchlist if items are changed elsewhere
     const handleWatchlistUpdate = () => loadWatchlist();
     window.addEventListener('watchlistUpdated', handleWatchlistUpdate);
     return () => {
@@ -93,7 +87,6 @@ export default function WatchlistPage() {
                 <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4">
                   {tvShowItems.map(item => (
                     <div key={`tv-${item.id}`} className="col">
-                      {/* Ensure item has necessary props for ItemCard, may need to fetch full details if only IDs stored */}
                       <ItemCard item={item} mediaType="tv" />
                     </div>
                   ))}
