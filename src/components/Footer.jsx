@@ -34,16 +34,16 @@ function Footer() {
               </p>
             </div>
             <div className="footer-social">
-              <a href="https://www.facebook.com/mohamed.khaalifa" className="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              <a href="#" className="social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="https://github.com/blaack007" className="social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+              <a href="#" className="social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="https://www.linkedin.com/in/mohamed-khalifa-656420269/" className="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+              <a href="#" className="social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin-in"></i>
               </a>
-              <a href="https://www.instagram.com/mohaamed__khalifa" className="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              <a href="#" className="social-icon" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-instagram"></i>
               </a>
             </div>
